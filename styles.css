@@ -5,13 +5,6 @@ body {
     background-image: url(https://static.vecteezy.com/ti/vecteur-libre/p3/4835687-effet-de-couleur-de-fond-bleu-pastel-degrade-gratuit-vectoriel.jpg);
 }
 
-#title{
-    text-align: center;
-    color: black;
-    font-size: 24pt;
-}
-
-
 a{
     color: blue;
 }
@@ -21,3 +14,42 @@ a:hover
         text-decoration: none;
         color: red
     }
+
+#csvFileInput{
+    margin: 5px;
+    padding: 5px;
+
+}
+
+.container{
+    width: 75%;
+}
+
+.dashboard-container {
+    width: 80%; /* Adjust the width of the big box */
+    margin: 10px auto;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.graph-box {
+    width: 100%; /* Each graph box takes the full width of the container */
+    margin-bottom: 20px; /* Adjust the space between each graph box */
+    background-color: #ffffff;
+    padding: 15px;
+    border-color: blue solid;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.tableContainer{
+    height: 50%;
+    width: 25%; 
+    margin: 10px ;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
