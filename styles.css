@@ -2,48 +2,15 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url(bleu-pastel-1l.jpg);
+    background-image: url(https://static.vecteezy.com/ti/vecteur-libre/p3/4835687-effet-de-couleur-de-fond-bleu-pastel-degrade-gratuit-vectoriel.jpg);
 }
 
-nav {
-    border: double;
-    border-color: #333;
-    background-image: url(fond-bleu.jpg);
-}
 #title{
     text-align: center;
     color: black;
     font-size: 24pt;
 }
 
-#content{
-    border: 1px black solid;
-    width: 1000px;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-}
-
-#element1{
-    width: 250px;
-    height: 200px;
-    border: rgb(0, 238, 255) solid;
-}
-
-#element2{
-    width: 250px;
-    height: 200px;
-    border: rgb(255, 0, 0) solid;
-
-}
-
-#element3{
-    width: 250px;
-    height: 200px;
-    border: rgb(0, 255, 0) solid;
-}
 
 a{
     color: blue;
@@ -54,103 +21,3 @@ a:hover
         text-decoration: none;
         color: red
     }
-
-    .main {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5em;
-      }
-      
-      .up {
-        display: flex;
-        flex-direction: row;
-        gap: 0.5em;
-      }
-      
-      .down {
-        display: flex;
-        flex-direction: row;
-        gap: 0.5em;
-      }
-      
-      .card1 {
-        width: 90px;
-        height: 90px;
-        outline: none;
-        border: none;
-        background: white;
-        border-radius: 90px 5px 5px 5px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-        transition: .2s ease-in-out;
-      }
-      
-      .instagram {
-        margin-top: 1.5em;
-        margin-left: 1.2em;
-        fill: #cc39a4;
-      }
-      
-      .card2 {
-        width: 90px;
-        height: 90px;
-        outline: none;
-        border: none;
-        background: white;
-        border-radius: 5px 90px 5px 5px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-        transition: .2s ease-in-out;
-      }
-      
-      .twitter {
-        margin-top: 1.5em;
-        margin-left: -.9em;
-        fill: #03A9F4;
-      }
-      
-      .card3 {
-        width: 90px;
-        height: 90px;
-        outline: none;
-        border: none;
-        background: white;
-        border-radius: 5px 5px 5px 90px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-        transition: .2s ease-in-out;
-      }
-      
-      .github {
-        margin-top: -.6em;
-        margin-left: 1.2em;
-      }
-      
-      .card4 {
-        width: 90px;
-        height: 90px;
-        outline: none;
-        border: none;
-        background: white;
-        border-radius: 5px 5px 90px 5px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-        transition: .2s ease-in-out;
-      }
-      
-      .discord {
-        margin-top: -.9em;
-        margin-left: -1.2em;
-        fill: #8c9eff;
-      }
-      
-      .card3:hover {
-        cursor: pointer;
-        scale: 1.1;
-        background-color: black;
-      }
-      
-      .card3:hover .github {
-        fill: white;
-      }
-      
-      .card3{background-image: url(bleu-pastel-1l.jpg);}
-      
-
-
