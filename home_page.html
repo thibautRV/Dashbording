@@ -8,7 +8,8 @@
 
     <link rel="stylesheet" href="styles.css">
     
-
+    <!-- Include PapaParse from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <!-- Include Chart.js from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -53,38 +54,34 @@
           </nav>
 
         </header>
-
-
-    <div class="container">
-      <div class="dashboard-container">
-        <input type="file" id="csvFileInput" accept=".csv">
-
-        <div class="graph-box" id="graphsContainer">
-
-          <canvas id="myChart"></canvas>
-        
-        </div>
-          
-        
-        <script src="script.js"></script>
-       
-        <!--And then in this <div> we put all the graph-->
-
-
-
-
-
-      </div>
-
     
+    <!--Bouton qui va nous servir à upload le ficher csv-->
+    <input type="file" id="csvFileInput" accept=".csv">
+    
+    <!--Table des données-->
+    <div class="tableContainer">
+      <h1>Données</h1>
     </div>
 
-    
+    <div class="container">
 
+      <div class="dashboard-container">
+
+        <div class="graph-box" id="graphsContainer">
+          <canvas id="myChart"></canvas>
+        
+
+      </div>
+    </div>
+
+
+    
+    <script src="script.js"></script>
 </body>
 
+<!-- FOOTER -->
 <footer>
-
+  <p>Dashboard Project 2022</p>
 </footer>
 
 </html>
