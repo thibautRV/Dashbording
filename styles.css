@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url("https://s1.1zoom.me/b5050/585/Texture_Brick_Wall_White_545270_1920x1080.jpg") fixed ;
+}
+
+nav {
+    border: double;
+    border-color: #333;
+    background-color: #333;
+}
+#title{
+    text-align: center;
+    color: black;
+    font-size: 24pt;
+}
+
+#content{
+    border: 1px black solid;
+    width: 1000px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+#element1{
+    width: 250px;
+    height: 200px;
+    border: rgb(0, 238, 255) solid;
+}
+
+#element2{
+    width: 250px;
+    height: 200px;
+    border: rgb(255, 0, 0) solid;
+
+}
+
+#element3{
+    width: 250px;
+    height: 200px;
+    border: rgb(0, 255, 0) solid;
+}
+
+a{
+    color: blue;
+}
+
+a:hover
+    {
+        text-decoration: none;
+        color: red
+    }
+
+
+
+
