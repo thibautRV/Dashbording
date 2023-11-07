@@ -1,50 +1,70 @@
-function enableEditingMode() {
-    var contentDiv = document.getElementById("editable-content");
-    var title = document.getElementById("title");
-    var description = document.getElementById("description");
+document.getElementById('csvFileInput').addEventListener('change', handleFileSelect);
 
-    // Create an input field for editing the title
-    var titleInput = document.createElement("input");
-    titleInput.type = "text";
-    titleInput.value = title.textContent;
+function handleFileSelect(event) {
+    const file = event.target.files[0];
 
-    // Replace the title with the input field
-    contentDiv.replaceChild(titleInput, title);
+    if (file) {
+        // Read the content of the file
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const csvData = e.target.result;
+            
+            // Process the CSV data (you may use a CSV parsing library)
+            const parsedData = parseCSV(csvData);
 
-    // Create a textarea for editing the description
-    var descriptionTextarea = document.createElement("textarea");
-    descriptionTextarea.value = description.textContent;
+            // Call a function to generate graphs using the parsed data
+            generateGraphs(parsedData);
+        };
 
-    // Replace the description with the textarea
-    contentDiv.replaceChild(descriptionTextarea, description);
+        reader.readAsText(file);
+    }
 }
 
-document.getElementById("enable-editing-button").addEventListener("click", enableEditingMode);
-   
-function disableEditingMode() {
-    // Code to disable editing mode. For example, you might hide the input field after the user is done editing.
-    var inputField = document.getElementById('inputField');
-    inputField.removeAttribute('contenteditable');
-}
-   
+function parseCSV(csvData) {
+    // Implement CSV parsing logic here or use a library like Papaparse
+    // Example: const parsedData = Papa.parse(csvData, { header: true });
+    // Replace this line with your actual parsing logic
 
-// This function takes the URL of the CSV file as an argument and reads it using the fetch API
-function readCSV(url) {
-    fetch(url)
-        .then(response => response.text())
-        .then(data => {
-            const dataAsArray = data.split('\n').map(row => row.split(','));
-            const output = document.getElementById('output');
-
-            // Loop through the rows of the CSV file and append them as table rows to the output element
-            dataAsArray.forEach(row => {
-                const rowElement = document.createElement('div');
-                rowElement.innerHTML = row.join(' ');
-                output.appendChild(rowElement);
-            });
-        });
+    // For demonstration purposes, returning a simple array with headers and data
+    return {
+        headers: ['Column1', 'Column2', 'Column3'],
+        data: [
+            [1, 10, 100],
+            [2, 20, 200],
+            [3, 30, 300]
+        ]
+    };
 }
 
-// Replace the URL with the URL of your CSV file
-readCSV('https://example.com/your_file.csv');
- 
+function generateGraphs(parsedData) {
+    const labels = parsedData.headers.slice(1); // Exclude the first column as labels
+    const datasets = parsedData.data.map(row => ({
+        label: `Data ${row[0]}`,
+        data: row.slice(1),
+        backgroundColor: getRandomColor(),
+        borderColor: getRandomColor(),
+        borderWidth: 1
+    }));
+
+    // Example: Create a bar chart
+    const ctx = document.getElementById('graphsContainer').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: datasets
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function getRandomColor() {
+    // Generate a random hex color code
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
+}
