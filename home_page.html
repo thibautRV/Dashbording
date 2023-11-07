@@ -7,7 +7,11 @@
     <title>Dashboard</title>
 
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    
+
+    <!-- Include Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!--Bootstrap-->
     <!-- CSS -->
@@ -38,7 +42,7 @@
                     <a class="nav-link" href="stat_page.html">Statistique</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact_us.html">A propos</a>
+                    <a class="nav-link" href="A_propos.html">A propos</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -52,8 +56,29 @@
 
 
     <div class="container">
+      <div class="dashboard-container">
+        <input type="file" id="csvFileInput" accept=".csv">
+
+        <div class="graph-box" id="graphsContainer">
+
+          <canvas id="myChart"></canvas>
+        
+        </div>
+          
+        
+        <script src="script.js"></script>
+       
+        <!--And then in this <div> we put all the graph-->
+
+
+
+
+
+      </div>
+
     
     </div>
+
     
 
 </body>
