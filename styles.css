@@ -2,13 +2,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url(fond-gris-moyen.jpg);
+    background-image: url(bleu-pastel-1l.jpg);
 }
 
 nav {
     border: double;
     border-color: #333;
-    background-color: #333;
+    background-image: url(fond-bleu.jpg);
 }
 #title{
     text-align: center;
@@ -150,6 +150,7 @@ a:hover
         fill: white;
       }
       
+      .card3{background-image: url(bleu-pastel-1l.jpg);}
       
 
 
