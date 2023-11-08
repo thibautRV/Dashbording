@@ -13,75 +13,101 @@
     <!-- Include Chart.js from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!--Bootstrap-->
-    <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
-    <!-- JS and Popper.js (optional, but required for certain Bootstrap components) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS and Popper.js (optional, but required for certain Bootstrap components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+    <style>
+        /* Ajoutez ici vos styles CSS personnalisés */
+        .navbar {
+            margin-bottom: 20px; /* Espace sous la barre de navigation */
+        }
 
+        .tableContainer {
+            margin-bottom: 20px; /* Espace sous la table des données */
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-box {
+            width: 100%;
+            max-width: 800px; /* Largeur maximale du graphique */
+        }
+
+        canvas {
+            width: 100%;
+            height: auto; /* Ajustement de la hauteur du graphique en fonction de la largeur */
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
 
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="home_page.html">Dashboard</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="*"></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="stat_page.html">Statistique</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="A_propos.html">A propos</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="contact_us.html">Contactez-nous</a>
-                  </li>
-                </ul>
-              </div>
+            <div class="container">
+                <a class="navbar-brand" href="home_page.html">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="*"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="stat_page.html">Statistique</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="A_propos.html">A propos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact_us.html">Contactez-nous</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </nav>
+        </nav>
+    </header>
 
-        </header>
-    
-    <!--Bouton qui va nous servir à upload le ficher csv-->
+    <!-- Bouton qui va nous servir à uploader le fichier CSV -->
     <input type="file" id="csvFileInput" accept=".csv">
-    
-    <!--Table des données-->
-    <div class="tableContainer">
-      <h1>Données</h1>
+
+    <!-- Table des données -->
+    <div class="container tableContainer">
+        <h1>Données</h1>
     </div>
 
-    <div class="container">
-
-      <div class="dashboard-container">
-
-        <div class="graph-box" id="graphsContainer">
-          <canvas id="myChart"></canvas>
-        
-
-      </div>
+    <div class="container dashboard-container">
+        <div class="graph-box">
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
 
-
-    
     <script src="script.js"></script>
-</body>
 
-<!-- FOOTER -->
-<footer>
-  <p>Dashboard Project 2022</p>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>Dashboard Project 2022</p>
+        </div>
+    </footer>
+
+</body>
 
 </html>
