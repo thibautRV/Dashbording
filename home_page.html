@@ -19,41 +19,6 @@
     <!-- Bootstrap JS and Popper.js (optional, but required for certain Bootstrap components) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   
-    <style>
-        /* Ajoutez ici vos styles CSS personnalisés */
-        .navbar {
-            margin-bottom: 20px; /* Espace sous la barre de navigation */
-        }
-
-        .tableContainer {
-            margin-bottom: 20px; /* Espace sous la table des données */
-        }
-
-        .dashboard-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .graph-box {
-            width: 100%;
-            max-width: 800px; /* Largeur maximale du graphique */
-        }
-
-        canvas {
-            width: 100%;
-            height: auto; /* Ajustement de la hauteur du graphique en fonction de la largeur */
-        }
-
-        footer {
-            background-color: #f8f9fa;
-            padding: 20px 0;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body>
@@ -94,19 +59,40 @@
     </div>
 
     <div class="container dashboard-container">
-        <div class="graph-box">
-            <canvas id="myChart"></canvas>
+        <!-- Trois graphiques à gauche -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="graph-box">
+                    <canvas id="graph1"></canvas>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="graph-box">
+                    <canvas id="graph2"></canvas>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="graph-box">
+                    <canvas id="graph3"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Deux graphiques à droite -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="graph-box">
+                    <canvas id="graph4"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="graph-box">
+                    <canvas id="graph5"></canvas>
+                </div>
+            </div>
         </div>
     </div>
-
     <script src="script.js"></script>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>Dashboard Project 2022</p>
-        </div>
-    </footer>
 
 </body>
 
