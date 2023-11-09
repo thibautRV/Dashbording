@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
+    <link rel="stylesheet"
+		href="responsive.css">    
 
     <!--Bootstrap-->
     <!-- CSS -->
@@ -58,12 +60,11 @@
       <div class="container">
         <h1 class="text-center mb-4">Dataset Iris</h1>
 
-        <div class="row">
+        <div class="box-container">
             <!-- Première boîte -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Le dataset Iris est composé de cinq colonnes:</h4>
+            <div class="box-apropos">
+                <div class="text">
+                        <h4 class="topic">Le dataset Iris est composé de cinq colonnes:</h4>
                         <ul>
                             <li>Longueur du sépale</li>
                             <li>Largeur du sépale</li>
@@ -72,49 +73,29 @@
                             <li>Variété</li>
                         </ul>
                     </div>
-                </div>
             </div>
 
             <!-- Deuxième boîte -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">On retrouve dans ce dataset trois variétés:</h4>
+            <div class="box-apropos">
+                <div class="text">
+                        <h2 class="topic">On retrouve dans ce dataset trois variétés:</h2>
                         <ul>
                             <li>Setosa</li>
                             <li>Versicolor</li>
                             <li>Virginica</li>
                         </ul>
-                    </div>
                 </div>
             </div>
+            <!-- Deuxième boîte -->
+            <div class="box-apropos">
+              <div class="text">
+                      <h2 class="topic">150 lignes divisées par 3 pour chacune des variétés</h2>
+
+              </div>
+          </div>
         </div>
 
-        <div class="button-container">
-            <!-- ... (votre bouton de téléchargement) ... -->
-        </div>
     </div>
 
 </body>
-
-</html>
-
-    </header>
-
-    <div class="button-container mt-4">
-      <a id="button" href='Dataset_iris.csv'>
-          <button class="button" type="button">
-              <span class="button__text">Download </span>
-              <span class="button__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg">
-                      <path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path>
-                      <path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path>
-                      <path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path>
-                  </svg>
-              </span>
-          </button>
-      </a>
-    </div>
-</body>
-</html>
 
