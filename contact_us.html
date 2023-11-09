@@ -4,28 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Contactez-nous</title>
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Votre fichier CSS -->
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
 
-    <!--Bootstrap-->
-    <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
-    <!-- JS and Popper.js (optional, but required for certain Bootstrap components) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home_page.html">Dashboard</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -48,40 +46,69 @@
         </nav>
     </header>
 
-    <div class="container" style="margin-top: 50px;">
-        <p>Si vous avez des questions ou des commentaires concernant notre projet, n'hésitez pas à nous contacter :</p>
-        
-        <div class="contact-info">
-            <h2>Informations de contact :</h2>
-            <p>Email: 
-              <ul>
-                <li>maia.jouenne@epita.fr</li>
-                <li>thibaut.hervet@epita.fr</li>
-                <li>luna.grandjean@epita.fr</li>
-              </ul>
-            </p>
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="container mt-5 custom-container">
+        <h2 class="text-center mb-4">Notre équipe</h2>
+        <div class="row">
+            <!-- Première personne -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://media.licdn.com/dms/image/D4E03AQHQiNl5vAJJYA/profile-displayphoto-shrink_800_800/0/1676296702381?e=1704931200&v=beta&t=_CffsW1VTKswh3J2zKyrNeuJgvFAp1NfzdQN1lLylew"
+                        class="card-img-top" alt="Nom de la personne 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Maia JOUENNE</h5>
+                        <p class="card-text"><i class="fas fa-envelope"></i> maia.jouenne@epita.fr</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deuxième personne -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://media.licdn.com/dms/image/D4E03AQFycnuSmoOj8Q/profile-displayphoto-shrink_800_800/0/1676294907901?e=1704931200&v=beta&t=ALRG3-KtY4vM0s7smhy8WMHDpFL5gYlIEevyHZFex88"
+                        class="card-img-top" alt="Nom de la personne 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Thibaut HERVET</h5>
+                        <p class="card-text"><i class="fas fa-envelope"></i> thibaut.hervet@epita.fr</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troisième personne -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://media.licdn.com/dms/image/D4E03AQG326lgkprIKg/profile-displayphoto-shrink_800_800/0/1685114696912?e=1704931200&v=beta&t=gSsWv_CoSGuSV_J757yXsInOxzfExyQ4EsMab2bwI1M"
+                        class="card-img-top" alt="Nom de la personne 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Luna GRANDJEAN</h5>
+                        <p class="card-text"><i class="fas fa-envelope"></i> luna.grandjean@epita.fr</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="team-members">
-            <h2>Notre Équipe :</h2>
-            <ul>
-                <li>Maia JOUENNE</li>
-                <li>Thibaut HERVET</li>
-                <li>Luna GRANDJEAN</li>
-            </ul>
-        </div>
+        <!-- Description de l'activité et Carte Google Maps -->
+        <div class="row mt-5">
+            <!-- Description de l'activité -->
+            <div class="col-md-6">
+                <div class="activity-description">
+                    <h3>Notre activité</h3>
+                    <p>Nous sommes des étudiants de l'IA Institut, une école spécialisée dans les domaines de l'intelligence artificielle et du Big Data. Ce site est le résultat d'une semaine de projet en développement web. Explorez nos compétences, découvrez notre équipe et explorez notre passion pour la technologie. Merci de visiter notre page et de partager notre enthousiasme pour l'avenir de la technologie !
 
-        <div class="github-link">
-            <h2>Retrouvez notre projet sur GitHub :</h2>
-       
-            <a id="gitbutton" href='https://github.com/thibautRV/Dashbording'>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="60px" height="60px" class="github">    
-                <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"></path>
-                </svg>
-            </a>
-      
+                    </p>
+                </div>
+            </div>
+
+            <!-- Carte Google Maps -->
+            <div class="col-md-6">
+                <h2 class="text-center-my-4">Notre localisation</h2>
+                <div class="google-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.5309839334213!2d2.2464732761595996!3d48.88621697133585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66511b0757cff%3A0xb2c52b8f1322a47c!2s5%20Rue%20Bellini%2C%2092800%20Puteaux!5e0!3m2!1sfr!2sfr!4v1699520775983!5m2!1sfr!2sfr"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
         </div>
-  
+    </div>
 </body>
-
 </html>
