@@ -201,7 +201,6 @@ body {
   overflow-x: hidden;
   }
   
-  
   .box-container {
   display: flex;
   justify-content: space-evenly;
@@ -254,3 +253,60 @@ body {
   letter-spacing: 3px;
   }
 
+.box-apropos {
+  height: 220px;
+  width: 230px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  background-color: var(--one-use-color);
+  }
+
+
+.box-apropos .topic {
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  }
+
+.box-apropos:hover {
+  transform: scale(1.08);
+  }
+.box-apropos ul {
+  color: white;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  }
+
+
+.box-contact-us {
+  height: 270px;
+  width: 237px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  background-color: var(--one-use-color);
+  }
+
+.box-contact-us:hover {
+  transform: scale(1.08);
+  }
+
+  .box-contact-us .card-body {
+    color: white;
+    font-size: 12px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    }
