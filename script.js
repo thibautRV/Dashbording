@@ -1,155 +1,192 @@
-document.getElementById('csvFileInput').addEventListener('change', handleFileSelect);
+// script.js
+let selectedDataAttribute; // Variable to store the selected data attribute
+let myChart; // Variable to store the Chart.js chart instance
 
-function handleFileSelect(event) {
-    const file = event.target.files[0];
+document.addEventListener('DOMContentLoaded', () => {
+  // Fetch data from the server
+  fetch('/api/data')
+    .then(response => response.json())
+    .then(data => {
+      // Update the HTML page with the first 10 rows of data
+      updateDataTable(data);
 
-    if (file) {
-        // Read the content of the file
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const csvData = e.target.result;
-            
-            // Process the CSV data (you may use a CSV parsing library)
-            const parsedData = parseCSV(csvData);
+      // Get available data attributes (assuming Variety is the last column)
+      const dataAttributes = Object.keys(data[0]).slice(0, -1);
 
-            // Call a function to generate graphs using the parsed data
-            generateGraphs(parsedData);
-        };
+      // Populate the dropdown with data attributes
+      const dropdown = document.getElementById('dataAttribute');
+      dataAttributes.forEach(attribute => {
+        const option = document.createElement('option');
+        option.value = attribute;
+        option.text = attribute;
+        dropdown.appendChild(option);
+      });
 
-        reader.readAsText(file);
+      // Set the default selected data attribute
+      selectedDataAttribute = dataAttributes[0];
+
+      // Update the graph based on the default selected data attribute
+      updateGraph();
+    })
+    .catch(error => console.error('Error fetching data:', error));
+});
+
+function updateDataTable(data) {
+  // Assuming you have a table with the ID 'dataTable'
+  const dataTable = document.getElementById('dataTable');
+
+  // Clear existing content
+  dataTable.innerHTML = '';
+
+  // Create table headers
+  const headerRow = document.createElement('tr');
+  for (const key in data[0]) {
+    const th = document.createElement('th');
+    th.textContent = key;
+    headerRow.appendChild(th);
+  }
+  dataTable.appendChild(headerRow);
+
+  // Create table rows with the first 10 rows of data
+  for (let i = 0; i < Math.min(data.length, 10); i++) {
+    const row = document.createElement('tr');
+    for (const key in data[i]) {
+      const td = document.createElement('td');
+      td.textContent = data[i][key];
+      row.appendChild(td);
     }
+    dataTable.appendChild(row);
+  }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Upload and read the selected file
-    var input = document.getElementById('uploadCSV');
-    input.addEventListener('change', function() {
-       var file = this.files[0];
-       var reader = new FileReader();
-   
-       // Generate graphs based on the parsed data
-       reader.onload = function(e) {
-         var csvData = e.target.result;
-         var parsedData = parseCSV(csvData);
-         generateGraphs(parsedData);
-       };
-   
-       // Read the file content
-       reader.readAsText(file);
-    });
-   });
-   
-   function parseCSV(csvData) {
-    return Papa.parse(csvData, {
-       header: true,
-       dynamicTyping: true,
-    }).data;
-   }
-   
-   function generateGraphs(parsedData) {
-    console.log("Generating Graphs");
-    let graphDiv = document.createElement("div");
-    graphDiv.setAttribute("id", "graphContainer");
-    document.body.appendChild(graphDiv);
+function updateGraph() {
+  // Randomly select an attribute from the available data attributes
+  const dataAttributes = Array.from(document.getElementById('dataAttribute').options);
+  const randomIndex = Math.floor(Math.random() * dataAttributes.length);
+  selectedDataAttribute = dataAttributes[randomIndex].value;
 
-    for (let i = 1; i < parsedData.length - 2; i++) {
-        // Bar Chart
-        let div = document.createElement("div");
-        div.setAttribute("class", "col s6 m3 l3");
-        let canvas = document.createElement("canvas");
-        canvas.width = "450";
-        canvas.height = "450";
-        div.appendChild(canvas);
-        graphDiv.appendChild(div);
-        var ctx = canvas.getContext("2d");
-        var barChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: parsedData.columns.slice(1),
-                datasets: [{
-                    label: parsedData[i].label,
-                    data: parsedData[i].values,
-                    backgroundColor: getRandomColor(),
-                    borderColor: getRandomColor(),
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // Line Chart
-        let lineDiv = document.createElement("div");
-        lineDiv.setAttribute("class", "col s6 m3 l3");
-        let lineCanvas = document.createElement("canvas");
-        lineCanvas.width = "450";
-        lineCanvas.height = "450";
-        lineDiv.appendChild(lineCanvas);
-        graphDiv.appendChild(lineDiv);
-        var lineCtx = lineCanvas.getContext("2d");
-        var lineChart = new Chart(lineCtx, {
-            type: "line",
-            data: {
-                labels: parsedData.map(function(row) { return row.label; }),
-                datasets: [{
-                    label: "Value",
-                    data: parsedData.map(function(row) { return row.value; }),
-                    borderColor: "rgba(75, 192, 192, 1)",
-                    backgroundColor: "rgba(75, 192, 192, 0.2)"
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    }
-}
-
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+  // Fetch data from the server
+  fetch('/api/data')
+    .then(response => response.json())
+    .then(data => {
+      // Update the graph based on the selected data attribute and chart type
+      createBarChart(data, selectedDataAttribute);
+      createLineChart(data, selectedDataAttribute);
+      createPieChart(data, selectedDataAttribute);
+    })
+    .catch(error => console.error('Error fetching data:', error));
 }
 
 
-function displayDataset(parsedData) {
-    // Create a table element
-    const table = document.createElement('table');
-    table.setAttribute('class', 'table'); // You might want to add a class for styling
+function createBarChart(data, attribute) {
+  const attributeValues = data.map(item => item[attribute]);
 
-    // Create the table header
-    const headerRow = table.insertRow(0);
-    for (const column of parsedData.columns) {
-        const th = document.createElement('th');
-        th.textContent = column;
-        headerRow.appendChild(th);
-    }
+  const ctx = document.getElementById('myBarChart').getContext('2d');
 
-    // Create the table rows with data
-    for (const row of parsedData) {
-        const tableRow = table.insertRow();
-        for (const column of parsedData.columns) {
-            const cell = tableRow.insertCell();
-            cell.textContent = row[column];
-        }
-    }
+  if (myChart) {
+    myChart.destroy();
+  }
 
-    // Append the table to a container in your HTML (e.g., a div with id 'tableContainer')
-    const tableContainer = document.getElementById('tableContainer');
-    tableContainer.innerHTML = ''; // Clear previous content
-    tableContainer.appendChild(table);
+  myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: data.map(item => item.Variety).slice(0, 10),
+      datasets: [{
+        label: `${attribute} - Setosa`,
+        data: data.map(item => (item.Variety === 'Setosa' ? item[attribute] : null)).slice(0, 10),
+        backgroundColor: getRandomColor(),
+        borderColor: getRandomColor(),
+        borderWidth: 1,
+      }, {
+        label: `${attribute} - Versicolor`,
+        data: data.map(item => (item.Variety === 'Versicolor' ? item[attribute] : null)).slice(0, 10),
+        backgroundColor: getRandomColor(),
+        borderColor: getRandomColor(),
+        borderWidth: 1,
+      }, {
+        label: `${attribute} - Virginica`,
+        data: data.map(item => (item.Variety === 'Virginica' ? item[attribute] : null)).slice(0, 10),
+        backgroundColor: getRandomColor(),
+        borderColor: getRandomColor(),
+        borderWidth: 1,
+      }],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}
+
+function createLineChart(data, attribute) {
+  const attributeValues = data.map(item => item[attribute]);
+
+  const ctx = document.getElementById('myLineChart').getContext('2d');
+
+  if (myChart) {
+    myChart.destroy();
+  }
+
+  myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.map(item => item.Variety).slice(0, 10),
+      datasets: [{
+        label: `${attribute} - Setosa`,
+        data: data.map(item => (item.Variety === 'Setosa' ? item[attribute] : null)).slice(0, 10),
+        borderColor: getRandomColor(),
+        borderWidth: 1,
+        fill: false,
+      }, {
+        label: `${attribute} - Versicolor`,
+        data: data.map(item => (item.Variety === 'Versicolor' ? item[attribute] : null)).slice(0, 10),
+        borderColor: getRandomColor(),
+        borderWidth: 1,
+        fill: false,
+      }, {
+        label: `${attribute} - Virginica`,
+        data: data.map(item => (item.Variety === 'Virginica' ? item[attribute] : null)).slice(0, 10),
+        borderColor: getRandomColor(),
+        borderWidth: 1,
+        fill: false,
+      }],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}
+
+function createPieChart(data, attribute) {
+  const attributeValues = data.map(item => item[attribute]);
+
+  const ctx = document.getElementById('myPieChart').getContext('2d');
+
+  if (myChart) {
+    myChart.destroy();
+  }
+
+  myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Setosa', 'Versicolor', 'Virginica'],
+      datasets: [{
+        data: [
+          data.map(item => (item.Variety === 'Setosa' ? item[attribute] : null)).reduce((a, b) => a + b, 0),
+          data.map(item => (item.Variety === 'Versicolor' ? item[attribute] : null)).reduce((a, b) => a + b, 0),
+          data.map(item => (item.Variety === 'Virginica' ? item[attribute] : null)).reduce((a, b) => a + b, 0),
+        ],
+        backgroundColor: getRandomColors(3),
+        borderColor: getRandomColors(3),
+        borderWidth: 1,
+      }],
+    },
+  });
 }
